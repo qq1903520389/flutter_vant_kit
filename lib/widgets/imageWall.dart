@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_vant_kit/theme/style.dart';
-import 'package:multi_image_picker/multi_image_picker.dart';
+// import 'package:multi_image_picker/multi_image_picker.dart';
 
 //照片墙
 class ImageWall extends StatefulWidget {
@@ -21,7 +21,7 @@ class ImageWall extends StatefulWidget {
   // 上传后返回全部图片信息
   final Function(List<String> newImages) onChange;
   // 监听图片上传
-  final Future<String> Function(List<Asset> file) onUpload;
+  final Future<String> Function(List file) onUpload;
   // 删除图片后的回调
   final Function(String removedUrl) onRemove;
 
@@ -123,18 +123,18 @@ class _ImageWall extends State<ImageWall> {
     return InkWell(
       child: widget.uploadBtn ?? btn,
       onTap: () async {
-        List<Asset> resultList = List<Asset>();
+        List resultList = [];
         try {
-          resultList = await MultiImagePicker.pickImages(
-            maxImages: widget.multiple ? widget.count - images.length : 1,
-            enableCamera: true,
-            cupertinoOptions: CupertinoOptions(takePhotoIcon: "chat"),
-            materialOptions: MaterialOptions(
-                startInAllView: true,
-                useDetailsView: true,
-                selectCircleStrokeColor: "#000000",
-                actionBarColor: "#000000"),
-          );
+          // resultList = await MultiImagePicker.pickImages(
+          //   maxImages: widget.multiple ? widget.count - images.length : 1,
+          //   enableCamera: true,
+          //   cupertinoOptions: CupertinoOptions(takePhotoIcon: "chat"),
+          //   materialOptions: MaterialOptions(
+          //       startInAllView: true,
+          //       useDetailsView: true,
+          //       selectCircleStrokeColor: "#000000",
+          //       actionBarColor: "#000000"),
+          // );
         } on Exception catch (e) {
           print(e.toString());
         }
